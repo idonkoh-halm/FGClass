@@ -36,21 +36,22 @@ class Game:
            if toss==2:
                 self.played=False
                 self.reccomend=False
-        if len(self,population)>5:
-            friends=random.sample(self.population,5)
-        else:
-            friends=self.population[:]
+
+        friends=self.population[:]
         for friend in friends:
             if friend.reccomend:
                 self.sax=True
 def create_FGC_Players (self):
     GIMR = Game()
     GIMR.played=True
-
+    
 def run_simulation (population,ticks):
-    create_players(population)
+    create_FGC_Players(population)
     for t in range(ticks):
+        print len (Game.population)
         for p in Game.population:
             p.tick()
+
+    
 
 run_simulation(500,3)
