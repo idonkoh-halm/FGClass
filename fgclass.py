@@ -18,7 +18,7 @@ class GamePlayer:
     def tick(self):
         if self.played:
             self.reccomend = True
-        if self.played:
+        if self.played:  #Now add the infection methods
             self.local()
             #toss=random.randint(1,2)
             #if toss==1:
@@ -49,9 +49,6 @@ def run_simulation (population,ticks):
         for p in GamePlayer.population:
             p.tick()
             
-
-
-    
 
 run_simulation(50,10)
 
