@@ -8,7 +8,7 @@ class GamePlayer:
     def __init__(self):
         self.played = False
         self.population.append(self)
-        self.reccomend = False
+        self.reccomend = False # recommending to people
     def local_tourney(self):
         self.population.remove(self)
         self.fgc_players.append(self)
@@ -19,7 +19,7 @@ class GamePlayer:
         if self.played:
             self.reccomend = True
         if self.played:  #Now add the infection methods
-            self.local()
+            self.local_tourney()
             #toss=random.randint(1,2)
             #if toss==1:
             #   self.sax()
@@ -27,10 +27,10 @@ class GamePlayer:
             #    self.played=False
             #    self.reccomend=False
 
-       # friends=self.population[:]
-        #for friend in friends:
-            #if friend.reccomend:
-                #self.sax=True
+            #friends=self.population[:]
+            #for friend in friends:
+            #    if friend.reccomend:
+            #        self.sax=True
         #if self.played:
         #    self.local()
     def create_FGC_Players (self):        
@@ -54,5 +54,5 @@ run_simulation(50,10)
 
 for i in range (10):
     GamePlayer()
-print len (GamePlayer.fgc_players)
-print len (GamePlayer.population)
+print len (GamePlayer.fgc_players),"is the number of people advancing the meta."
+print len (GamePlayer.population), "is the number of total players."
