@@ -45,6 +45,35 @@ class GamePlayer:
                 friends = self.casual_population[:]
             for f in friends:
                 f.played=True
+#class DataWriter:
+#    '''A simple class to write data to a file Originally from object infection code.'''
+    
+#    def __init__ (self, filename):
+#        self.f = file(filename,'w')
+#        self.output_header()
+
+#    def output_text (self, txt):
+#        self.f.write(txt+'\n') # Add newline
+
+#    def output_list (self, data_list):
+#        txt = ''
+#        for itm in data_list:
+#            txt += str(itm)+','
+#        self.output_text(txt)
+
+#    def output_header (self):
+#        self.output_text('population,graveyard,casual_population,FGC Population')
+
+#    def output_data (self):
+        # Output data for our population...
+        # You'll want to do something more so you can track the number
+        # of infected people, immune people, etc.
+#        self.output_list([len(GamePlayer.population),len(GamePlayer.graveyard)])
+
+#    def finish (self):
+#        self.f.close()
+    
+
 
 
 def make_players (n):
@@ -53,12 +82,15 @@ def make_players (n):
     for q in range (n-1):
         GamePlayer()
     
-def run_simulation (fgc_players,ticks):
+def run_simulation (fgc_players,ticks,filename='fgcdata.csv'):
+#    plot_device = DataWriter(filename)
     make_players(fgc_players)
     for t in range(ticks):
+#        plot_device.output_data()
         print len (GamePlayer.casual_population)
         for p in GamePlayer.population:
             p.tick()
+#        plot_device.finish()
 def mr_wizard ():
     Melee="This game is going places; it will be featured at a future major tournament!"
     Injustice="This game isn't going to make it, the community just can't keep it alive long enough."
@@ -69,24 +101,25 @@ def mr_wizard ():
         print Soul_Calibur
     else:
         print Injustice
-
-run_simulation(50,10)
 def results():
-    time.sleep(4)
+#    time.sleep(4)
     if len (GamePlayer.graveyard)==1:
-        print "player went back to playing Street Fighter"
+        print len (GamePlayer.graveyard), "player went back to playing Street Fighter"
     else:
         print len (GamePlayer.graveyard), "players went back to playing Street Fighter."
-    time.sleep(4)
+#    time.sleep(4)
     if len (GamePlayer.casual_population)==1:
-        print "player didn't really contribute much to the community."
+        print "player did no really contribute much to the community."
     else:
         print len (GamePlayer.casual_population), "players didn't really contribute much."
-    time.sleep(4)
+#    time.sleep(4)
     if len (GamePlayer.fgc_players)==1:
         print len (GamePlayer.fgc_players),"player is growing the game's meta and expanding its community."
     else:
         print len (GamePlayer.fgc_players),"players are growing the game's meta and expanding its community."
-    time.sleep(3)
+#    time.sleep(3)
+
+
+run_simulation(50,10)
 results()
 mr_wizard()
