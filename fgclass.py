@@ -38,7 +38,7 @@ class GamePlayer:
                     self.recommend=True
 
         if self.recommend:
-            nfriends = 1
+            nfriends = 5
             if len(self.casual_population) > nfriends:
                 friends=random.sample(self.casual_population,nfriends)
             else:
@@ -120,6 +120,6 @@ def results():
 #    time.sleep(3)
 
 
-run_simulation(50,10)
+run_simulation(500,10)
 results()
 mr_wizard()
